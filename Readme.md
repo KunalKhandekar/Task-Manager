@@ -1,49 +1,56 @@
-Full Stack Developer Assessment Task
+# Task Manager
 
-Objective: The goal of this task is to evaluate the candidate’s ability to build a small full-stack feature using modern technologies.
+A full-stack task management application built as part of a Full Stack Developer Assessment. Users can sign up, log in, and manage their personal tasks — all in a clean, responsive interface.
 
-Task: Build a Simple Task Manager
+**Live Demo:** [task.sahilkhandekar.dev](https://task.sahilkhandekar.dev)
 
-- Frontend (React / Next.js):
-    - Create a user interface to:
-        - Add a new task (title + description)
-        - View all tasks in a list
-        - Mark a task as completed
-        - Delete a task
-        - Maintain a clean component structure
-        - Implement proper state management
-        - Basic styling is sufficient (no need for advanced UI design)
+## Tech Stack
 
-- Backend (Node.js – NestJS / Express / Laravel):
-    - Develop REST APIs:
-        - POST /tasks → Create a task
-        - GET /tasks → Retrieve all tasks
-        - PATCH /tasks/:id → Mark task as completed
-        - DELETE /tasks/:id → Delete a task
-        - Follow a proper project structure (controllers, services, etc.)
+| Layer | Technology |
+|---|---|
+| Frontend | React 19, Vite, Tailwind CSS, React Router |
+| Backend | Node.js, Express, MongoDB, Mongoose |
+| Auth | JWT via HTTP-only cookies |
+| Deployment | Vercel (Frontend) · AWS (Backend) |
 
-- Database:
-    - Use MongoDB or SQL (MySQL/PostgreSQL)
-    - Each task should include:
-        - id
-        - title
-        - description
-        - status (completed / pending)
-        - timestamps
+## Features
 
-- Requirements:
-    - Use JavaScript
-    - Implement proper error handling
-    - Write clean, readable, and maintainable code
-    - Add basic validation (e.g., title is required)
-    - Use Git and share a repository link
+- **Authentication** — Signup, login, and logout with JWT stored in HTTP-only cookies
+- **Task CRUD** — Create, view, toggle completion, and delete tasks
+- **Per-user isolation** — Each user only sees their own tasks
+- **Pagination & filtering** — Query tasks by status (`pending` / `completed`) with page/limit support
+- **Validation** — Input validated on both client and server
+- **Protected routes** — Frontend routes and all task APIs require authentication
 
-- Bonus (Optional):
-    - Implement authentication (login/signup)
-    - Add pagination or filtering
-    - Deploy the application (Vercel / AWS / Render)
+## Project Structure
 
-- Submission Guidelines:
-    - Share the GitHub repository link
-    - Include steps to run the project locally
-    - Provide API documentation (Postman collection or README)
+```
+task-manager/
+├── Backend/
+│   ├── server.js
+│   └── src/
+│       ├── config/         # DB connection
+│       ├── controllers/    # Route handlers
+│       ├── middleware/     # Auth middleware
+│       ├── models/         # Mongoose schemas
+│       ├── routes/         # Express routers
+│       └── services/       # Business logic
+└── Frontend/
+    └── src/
+        ├── api/            # Axios API calls
+        ├── components/     # Reusable UI components
+        ├── context/        # Auth & Task context providers
+        └── pages/          # Route-level page components
+```
+
+## Running Locally
+
+See [SETUP.md](./SETUP.md) for full instructions on running the project locally.
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [SETUP.md](./SETUP.md) | Local development setup guide |
+| [Backend/Readme.md](./Backend/Readme.md) | Backend-specific details and API notes |
+| [Task-Description.md](./Task-Description.md) | Original assessment requirements |
