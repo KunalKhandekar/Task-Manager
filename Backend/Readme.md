@@ -14,8 +14,8 @@ A RESTful task manager backend built with **Node.js**, **Express**, and **MongoD
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd task-manager/Backend
+git clone https://github.com/KunalKhandekar/Task-Manager.git
+cd Task-Manager/Backend
 ```
 
 ### 2. Install dependencies

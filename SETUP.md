@@ -16,8 +16,8 @@ A full-stack task management app built with **Express + MongoDB** (backend) and 
 ## 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd task-manager
+git clone https://github.com/KunalKhandekar/Task-Manager.git
+cd Task-Manager
 ```
 
 ---
