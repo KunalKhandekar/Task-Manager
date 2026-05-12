@@ -10,10 +10,14 @@ export default function AddTaskForm({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim()) {
-      setError('Title is required');
-      return;
-    }
+    // if (!title.trim()) {
+    //   setError('Title is required');
+    //   return;
+    // }
+    // if (!description.trim()) {
+    //   setError('description is required');
+    //   return;
+    // }
     setError('');
     setSubmitting(true);
     try {
@@ -22,7 +26,12 @@ export default function AddTaskForm({ onClose }) {
       setDescription('');
       onClose?.();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to add task');
+      const errors = err.response?.data?.errors;
+      setError(
+        errors?.length
+          ? errors.map((e) => e.msg).join(", ")
+          : err.response?.data?.message || "Failed to add task"
+      );
     } finally {
       setSubmitting(false);
     }
@@ -46,7 +55,7 @@ export default function AddTaskForm({ onClose }) {
         autoFocus
       />
       <textarea
-        className={`${inputCls} resize-y min-h-[72px]`}
+        className={`${inputCls} resize-y min-h-18`}
         placeholder="Description (optional)"
         value={description}
         onChange={(e) => setDescription(e.target.value)}

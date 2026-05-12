@@ -10,7 +10,7 @@ router.use(protect);
 // Validation Rules
 const createRules = [
   body('title').trim().notEmpty().withMessage('Title is required'),
-  body('description').optional().trim(),
+  body('description').trim().notEmpty().withMessage('Description is required'),
 ];
 
 const idRule = [

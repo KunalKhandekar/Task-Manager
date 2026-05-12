@@ -17,8 +17,8 @@ const createTask = async (req, res, next) => {
 
 const getAllTasks = async (req, res, next) => {
   try {
-    const { status, page, limit } = req.query;
-    const result = await taskService.getAllTasks(req.user.id, { status, page, limit });
+    const { status, page, limit, order } = req.query;
+    const result = await taskService.getAllTasks(req.user.id, { status, page, limit, order });
     res.status(200).json({ success: true, data: result });
   } catch (err) {
     next(err);

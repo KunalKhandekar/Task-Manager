@@ -5,18 +5,18 @@ const createTask = async (userId, { title, description }) => {
   return task;
 };
 
-const getAllTasks = async (userId, { status, page = 1, limit = 10 }) => {
+const getAllTasks = async (userId, { status, page = 1, limit = 10, order = 'ASC' }) => {
   const pageNum = Math.max(1, parseInt(page, 10) || 1);
   const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
   const skip = (pageNum - 1) * limitNum;
-
+  
   const filter = { userId };
   if (status && Object.values(TASK_STATUS).includes(status)) {
     filter.status = status;
   }
 
   const [tasks, total] = await Promise.all([
-    Task.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limitNum),
+    Task.find(filter).sort({ createdAt: order === 'DESC' ? -1 : 1 }).skip(skip).limit(limitNum),
     Task.countDocuments(filter),
   ]);
 

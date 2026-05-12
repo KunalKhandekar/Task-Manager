@@ -15,7 +15,7 @@ export default function Navbar() {
       <span className="text-base sm:text-lg font-bold text-indigo-600 shrink-0">Task Manager</span>
       {user && (
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <span className="text-xs sm:text-sm text-slate-500 truncate max-w-[120px] sm:max-w-none">
+          <span className="text-xs sm:text-sm text-slate-500 truncate max-w-30 sm:max-w-none">
             Hello, {user.name}
           </span>
           <button

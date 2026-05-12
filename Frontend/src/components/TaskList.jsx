@@ -17,6 +17,8 @@ export default function TaskList() {
     page,
     setPage,
     pagination,
+    order,
+    setOrder,
   } = useTasks();
 
   return (
@@ -40,10 +42,21 @@ export default function TaskList() {
             </button>
           );
         })}
+
         {pagination.total > 0 && (
           <span className="ml-auto self-center text-xs text-slate-400">
             {pagination.total} task{pagination.total !== 1 ? "s" : ""}
           </span>
+        )}
+
+        {tasks.length > 0 && (
+          <button
+            onClick={() => setOrder(order === "DESC" ? "ASC" : "DESC")}
+            disabled={loading}
+            className="px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-colors bg-white border border-slate-300 text-slate-600 hover:border-indigo-400 hover:text-indigo-600 cursor-pointer disabled:cursor-not-allowed"
+          >
+            {order === "DESC" ? "↓ Newest" : "↑ Oldest"}
+          </button>
         )}
       </div>
 
