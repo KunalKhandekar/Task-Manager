@@ -49,14 +49,14 @@ export default function AddTaskForm({ onClose }) {
       <input
         className={inputCls}
         type="text"
-        placeholder="Task title *"
+        placeholder="Task title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         autoFocus
       />
       <textarea
         className={`${inputCls} resize-y min-h-18`}
-        placeholder="Description (optional)"
+        placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         rows={3}
